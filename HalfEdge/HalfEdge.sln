@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{3568E227-A2A6-B7E8-CF83-22633D0991F9}") = "HalfEdge", "Assembly-CSharp.csproj", "{FFA0DCD3-6BEA-D78A-C72F-3BD8D3AEAD16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFA0DCD3-6BEA-D78A-C72F-3BD8D3AEAD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA0DCD3-6BEA-D78A-C72F-3BD8D3AEAD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA0DCD3-6BEA-D78A-C72F-3BD8D3AEAD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA0DCD3-6BEA-D78A-C72F-3BD8D3AEAD16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
