@@ -17,9 +17,9 @@ public class FileReader {
 		// false => vertices
 		// true  => half edges
 		bool readingType = false;
-		int[] nexts, twins;
-		nexts [0] = 0;
-		twins [0] = 0;
+
+		int[] nexts = new int[] {0};
+		int[] twins = new int[] {0};
 
 		// Handle any problems that might arise when reading the text
 		try
@@ -77,7 +77,7 @@ public class FileReader {
 								twins[index] = twinIndex;
 								nexts[index] = nextIndex;
 
-								if(poly.faces[faceIndex]) 
+								if(poly.faces[faceIndex] != null) 
 									hEdge.face = poly.faces[faceIndex];
 								else
 									hEdge.face = poly.faces[faceIndex] = new Face(hEdge);
@@ -112,5 +112,4 @@ public class FileReader {
 			return false;
 		}
 	}
-}
 }

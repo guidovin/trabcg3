@@ -72,6 +72,7 @@ public class HEdge {
 		Vertex[] vertices;
 		vertices [0] = this.vert;
 		vertices [1] = this.next.vert;
+		return vertices;
 	}
 
 	public Face[] getFaces()
