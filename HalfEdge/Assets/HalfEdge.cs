@@ -63,9 +63,28 @@ public class Vertex {
 				break;			
 			}
 			v[i] = HE.vert;
+			i++;
 			HE = HE.next.twin;//separar se n funcionar
 		}
 		return v;	
+	}
+	public Face[] getNeighborFaces() 
+	{
+		int i = 0;
+		Face[] faces;
+		HEdge HE;
+		HE = this.hEdge; //ou HE = this.hEdge.twin n sei se funciona
+		HE = HE.twin;	 //
+		while(TRUE){
+			if(HE == this.hEdge && i != 0){
+			
+				break;			
+			}
+			faces[i] = HE.face;
+			i++;
+			HE = HE.next.twin;//separar se n funcionar
+		}
+		return faces;	
 	}
 }
 
