@@ -10,13 +10,14 @@ public class FileReader {
 	public string[] entries;
 	public Polygon poly;
 
-		
-	private bool Load(string fileName)
+	public bool load(string fileName)
 	{
 		// Tipo de leitura que o leitor está fazendo:
 		// false => vertices
 		// true  => half edges
 		bool readingType = false;
+
+		poly = new Polygon ();
 
 		int[] nexts = new int[] {0};
 		int[] twins = new int[] {0};
@@ -55,13 +56,15 @@ public class FileReader {
 
 							if(!readingType) // trata vertices
 							{
-								
-								poly.vertices[index] = 
-									new Vertex(
-										float.Parse(entries[1]),
-										float.Parse(entries[2]), 
-										float.Parse(entries[3]) 
-									);
+								Vertex vert = new Vertex(
+									float.Parse(entries[1]),
+									float.Parse(entries[2]), 
+									float.Parse(entries[3]) 
+								);
+								vert.index = index;
+
+								poly.vertices[index] = vert;
+
 							}
 							else //trata half edges
 							{
@@ -71,7 +74,7 @@ public class FileReader {
 								int faceIndex = int.Parse(entries[4]);
 
 								HEdge hEdge = new HEdge();
-
+								hEdge.index = index;
 								hEdge.vert = poly.vertices[vertexIndex];
 
 								twins[index] = twinIndex;
@@ -80,7 +83,11 @@ public class FileReader {
 								if(poly.faces[faceIndex] != null) 
 									hEdge.face = poly.faces[faceIndex];
 								else
-									hEdge.face = poly.faces[faceIndex] = new Face(hEdge);
+								{
+									Face face = new Face(hEdge);
+									face.index = faceIndex;
+									hEdge.face = poly.faces[faceIndex] = face;
+								}
 
 								poly.vertices[vertexIndex].hEdge = 
 									poly.halfEdges[index] = 
