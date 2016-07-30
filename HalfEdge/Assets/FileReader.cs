@@ -34,11 +34,14 @@ public class FileReader {
 			// instead of relying on garbage collection.
 			// (Do not confuse this with the using directive for namespace at the 
 			// beginning of a class!)
+
 			using (theReader)
 			{
 				do // WHILE there's lines left in the text file, do this:
 				{
 					line = theReader.ReadLine();
+
+					MonoBehaviour.print(line);
 
 					if (line == "#VERTICES"){
 						readingType = false;
@@ -49,6 +52,8 @@ public class FileReader {
 					else if (line != null)
 					{
 						string[] entries = line.Split(' '); //separa os valores na linha por espaço
+
+						MonoBehaviour.print(entries.Length);
 
 						if (entries.Length > 0)
 						{
@@ -116,7 +121,8 @@ public class FileReader {
 		// on what didn't work
 
 			Console.WriteLine("{0}\n", e.Message);
-			MonoBehaviour.print(e.Message);
+			MonoBehaviour.print("Exceção: " + e.Message);
+		//	MonoBehaviour.print("Causa da Exceção: " + e.InnerException.Message);
 
 			return false;
 		}
