@@ -116,6 +116,8 @@ public class FileReader {
 		// on what didn't work
 
 			Console.WriteLine("{0}\n", e.Message);
+			MonoBehaviour.print(e.Message);
+
 			return false;
 		}
 	}

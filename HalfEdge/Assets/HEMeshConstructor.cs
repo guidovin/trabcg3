@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class HEMeshConstructor : MonoBehaviour {
@@ -7,32 +8,29 @@ public class HEMeshConstructor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		print("Começou!");
 
 		MeshFilter mf = GetComponent<MeshFilter> ();
 		Mesh mesh = new Mesh ();
 
 		FileReader reader = new FileReader ();
 
-		if (reader.load (fileName)) 
-		{
+		if (reader.load (fileName)) {
 			Polygon poly = reader.poly;
 
-			Vector3[] vecVerts = new Vector3[] {};
-			int[] triangles = new int[] {};
+			Vector3[] vecVerts = new Vector3[] { };
+			int[] triangles = new int[] { };
 
 			int i = 0;
-			foreach (Vertex vert in poly.vertices)
-			{
-				vecVerts[i] = vert.asVector();
+			foreach (Vertex vert in poly.vertices) {
+				vecVerts [i] = vert.asVector ();
 				i++;
 			}
 
-			foreach (Face face in poly.faces) 
-			{
-				Vertex[] verts = face.getVertices();
-				for(int k = 0; i < 3; i++)
-				{
-					triangles[triangles.Length] = verts[i].index - 1;
+			foreach (Face face in poly.faces) {
+				Vertex[] verts = face.getVertices ();
+				for (int j = 0; j < 3; j++) {
+					triangles [triangles.Length] = verts[j].index - 1;
 				}
 			}
 
@@ -41,6 +39,8 @@ public class HEMeshConstructor : MonoBehaviour {
 			mesh.RecalculateNormals ();
 
 			mf.mesh = mesh;
+		} else {
+			print("Erro, não foi possível carregar o arquivo");
 		}
 	}
 	
